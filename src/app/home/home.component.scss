@@ -1,0 +1,174 @@
+.homeContainer{
+    .home-body{
+        padding: 1% 16%;
+        .chat-window{
+            border-radius: 5px;
+            box-shadow: 0px 0px 12px 2px grey;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            background-color: #eeeeee;
+            .list-user{
+                padding: 15px;
+                background-color: white;
+                border-radius: 5px;
+                width: 20%;
+                .list-header{
+
+                }
+                .users{
+                    
+                    ul{
+                        list-style:none;
+                        padding-left: 0px;
+                    li{
+                        float: left;
+                        padding: 4px;
+                        font-size: 12px;
+                        /* border-radius: 5px; */
+                        font-weight: 500;
+                        width: 100%;
+                        line-height: 12px;
+
+                        background-color: #d0cccc;
+                        margin-bottom: 5px;
+                        cursor: pointer;
+                    }
+                    }
+                    .req-btn{
+                        width: 100%;
+                        height: 2rem;
+                        background-color: green;
+                        color: white;
+                        font-size: 13px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        border: none;
+                    }
+                }
+            }
+            .chat-box{
+                background-color: white;
+                padding: 10px;
+                margin-left: 10px;
+               width: 60%;
+               display: flex;
+               flex-direction: column;
+                .header{
+                    width: 100%;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: gray;
+                }
+                .body{
+                    overflow-y: scroll;
+                    background-color: #eeeeee;
+                    width: 100%;
+                    min-height: 15rem;
+                    max-height: 15rem;
+                    
+                    .left-msg{
+                        display: flex;
+                        flex-direction: row;
+
+                        .lmsg{
+                        float: left;
+                        margin-left: 15px;
+                        margin-top: 5px;
+                        background-color: #a1cea1;
+                        margin-bottom: 10px;
+                        font-size: 14px;
+                        color: #656060;
+                        padding: 4px;
+                        padding-left: 15px;
+                        border-radius: 10px;
+                        max-width: 55%;
+                        }
+                        .propic{
+                            margin-top: 5px;
+                            margin-left: 10px;
+                            font-size: 20px;
+                            font-style: normal;
+                            color: #1876d2;
+                        }
+                        
+                    }
+                    .right-msg{
+                        .proright{
+                            margin-top: 5px;
+                            margin-right: 10px;
+                            font-size: 20px;
+                            font-style: normal;
+                            color: #1876d2;
+                            float: right;
+                        }
+                        .rmsg{       
+                        float: right;
+                        margin-right: 15px;
+                        background-color: #a1cea1;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        color: #656060;
+                        padding-right: 5px;
+                        padding: 4px;
+                        padding-right: 15px;
+                        border-radius: 10px;
+                        max-width: 55%;
+                        }
+                    }
+                    
+                
+                }
+                .footer{
+                    margin-top: 2px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    input{
+                        width: 80%;
+                        height: 1.5rem;
+                        padding: 3px;
+                    }
+                    button{
+                        width: 20%;
+                        border: none;
+                        background-color: #1876d2;
+                        color:white;
+
+                    }
+                }
+            }
+            .notification{
+                width: 20%;
+                padding: 15px;
+                background-color: white;
+                border-radius: 5px;
+                width: 20%;
+                    
+            .nots{
+                
+                ul{
+                    list-style:none;
+                    padding-left: 0px;
+                li{
+                    float: right;
+                    padding: 4px;
+                    font-size: 12px;
+                    /* border-radius: 5px; */
+                    font-weight: 500;
+                    width: 100%;
+                    line-height: 12px;
+
+                    background-color: #d0cccc;
+                    margin-bottom: 5px;
+                    cursor: pointer;
+                }
+                }
+                
+            }
+            }
+        
+        }
+    }
+}

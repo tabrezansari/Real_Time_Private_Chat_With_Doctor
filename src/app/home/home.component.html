@@ -1,0 +1,60 @@
+<div class="homeContainer">
+    <div class="home-body">
+        <div class="chat-window">
+            <div class="list-user">
+                <div class="list-header">
+                    <label>Successfull chats</label>
+                </div>
+                <div class="users">
+                    <ul>
+                        <!-- <li *ngFor="let user of activeUsers" (click)="setChatFriend(user.userid)" >
+                            {{user.name}}
+                        </li> -->
+                       
+                    </ul>
+                    <button *ngIf="!isDoctor" (click)="requstDoctor()" class="req-btn">Request Chat</button>
+                </div>
+            </div>
+            <div class="chat-box" *ngIf="chatFriend!==null">
+                <div class="header">
+                   {{chatFriend.name}}
+                </div >
+                <div class="body" >
+                       <div *ngFor="let chat of messages">
+                        <div class="left-msg" *ngIf="chat.userid==='tabrez@t.com'">
+                        <i class="fas fa-user-md propic"></i>
+
+                        <span class="lmsg"> {{chat.message}}</span> 
+                        </div>
+
+                        <div class="right-msg" *ngIf="chat.userid!='tabrez@t.com'">
+                            <i class="fas fa-user proright"></i>
+                            <span class="rmsg">{{chat.message}}</span>
+                            
+                        </div>
+                        </div>
+                        
+
+                </div>
+                <div class="footer">
+                    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage(chatFriend.userid)" type="text" placeholder="Send Message">
+                    <button (click)="sendMessage(chatFriend.userid)" >Send</button>
+                </div>
+            </div>
+            <div class="notification" *ngIf="isDoctor">
+            <div class="list-notification">
+                <div class="list-header">
+                    <label>Chat Requests</label>
+                </div>
+                <div class="nots">
+                    <ul>
+                        <li *ngFor="let chat of totalReq" (click)="startChat(chat)" >
+                            {{chat.name}}
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

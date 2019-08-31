@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS `docto`;
+
+CREATE DATABASE `docto`;
+
+DROP TABLE IF EXISTS `users`;
+
