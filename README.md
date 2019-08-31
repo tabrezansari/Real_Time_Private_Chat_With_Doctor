@@ -1,32 +1,23 @@
-<<<<<<< HEAD
-# Docto
+# Docto (Real_Time_Private_Chat_With_Doctor)
+This repository consist both the <b>client</b> and <b>server</b>
+<br/>
+server file is inside of the <b>client's</b> file named -> <b>docto-server</b>(node)
+<br>
+## Tools and Tech's used to create this application<br>
+[<img src="https://rawgit.com/brillout/awesome-angular-components/master/angular-logo.svg"  width="100" height="100">](https://github.com/tabrezansari/Real_Time_Private_Chat_With_Doctor)
+[<img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"   width="100" height="100">](https://github.com/tabrezansari/Real_Time_Private_Chat_With_Doctor)
+[<img src="https://cdn.worldvectorlogo.com/logos/socket-io.svg"   width="100" height="100">](https://github.com/tabrezansari/Real_Time_Private_Chat_With_Doctors)
+[<img src="https://cdn.worldvectorlogo.com/logos/mysql-5.svg"  width="100" height="100">](https://github.com/tabrezansari/Real_Time_Private_Chat_With_Doctor)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.1.
 
-## Development server
+## To run this application follow the following steps.
+1. import <b>db.sql</b> from (docto/docto-server/config/db.sql) to create database and tables.<br>
+2. npm install in both the <b>client</b> and <b>server</b> folder <br/>
+<b>npm install</b> (docto folder)<br>
+<b>npm install</b> (docto-server folder)<br/>
+2. inside the <B>docto/docto-server</b> run the command <b>node start.js <br> to start the server</b>
+4. inside the root directory run the command <b>ng serve </b> to start the client <br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+That's it.<br>
+You are good to go now!!<br>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-=======
-# Real_Time_Private_Chat_With_Doctor
-Online real time private chat app to chat with the doctors around your place build with Angular and Socket Node
->>>>>>> 11b817a350ea64426e49e503bb82808c3b033aba
