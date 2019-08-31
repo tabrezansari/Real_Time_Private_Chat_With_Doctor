@@ -66,6 +66,8 @@
                     width: 100%;
                     min-height: 15rem;
                     max-height: 15rem;
+                    display: flex;
+                    flex-direction: column;
                     
                     .left-msg{
                         display: flex;
@@ -82,7 +84,7 @@
                         padding: 4px;
                         padding-left: 15px;
                         border-radius: 10px;
-                        max-width: 55%;
+                        max-width: 80%;
                         }
                         .propic{
                             margin-top: 5px;
@@ -113,7 +115,7 @@
                         padding: 4px;
                         padding-right: 15px;
                         border-radius: 10px;
-                        max-width: 55%;
+                        max-width: 80%;
                         }
                     }
                     

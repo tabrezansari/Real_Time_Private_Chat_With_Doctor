@@ -21,13 +21,13 @@
                 </div >
                 <div class="body" >
                        <div *ngFor="let chat of messages">
-                        <div class="left-msg" *ngIf="chat.userid==='tabrez@t.com'">
+                        <div class="left-msg" *ngIf="chat.userid===currentUser">
                         <i class="fas fa-user-md propic"></i>
 
                         <span class="lmsg"> {{chat.message}}</span> 
                         </div>
 
-                        <div class="right-msg" *ngIf="chat.userid!='tabrez@t.com'">
+                        <div class="right-msg" *ngIf="chat.userid!==currentUser">
                             <i class="fas fa-user proright"></i>
                             <span class="rmsg">{{chat.message}}</span>
                             

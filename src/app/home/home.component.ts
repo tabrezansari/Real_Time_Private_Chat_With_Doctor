@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   chatFriend=null;
   succChat=null;
   isDoctor=null;
+  currentUser=JSON.parse(localStorage.getItem("userMeta")).userid;
   constructor(private chatService: ChatService,private router:Router,private handleService:HandlerService) { 
 
   }
