@@ -4,8 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ChatService } from '../chat.service';
 import { ThrowStmt } from '@angular/compiler';
-var _ = require('lodash');
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
           this.handleService.getlogin(response.token, response.group, response.name);
           alert("signed in successfully");
           window.location.reload();
-
           this.router.navigate(['/home']);
 
         }

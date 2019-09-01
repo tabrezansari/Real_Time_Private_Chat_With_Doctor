@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 				group: data[0].usergrp,
 				name: data[0].name
 			}
-
+			console.log("response:",resData)
 			res.send(resData);
 		}
 	}, mysql.queryReturn(query, queryargs));

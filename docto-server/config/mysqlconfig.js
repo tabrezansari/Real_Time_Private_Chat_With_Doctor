@@ -4,7 +4,7 @@ var connectionconfig = {
     'connectionLimit': 5,
     'host': 'localhost',
     'user': 'root',
-    'password': 'YOUR_PASSWORD',
+    'password': 'YOUR_DB_PASS',
     'database': 'docto',
     'debug': false
     //'multipleStatements': true
