@@ -13,7 +13,7 @@ var _ = require('lodash');
 })
 export class HomeComponent implements OnInit {
   message: string;
-  messages: string[] = [];
+  messages= [];
   totalReq=[];
   activeUsers=null;
   chatFriend=null;
@@ -31,11 +31,12 @@ export class HomeComponent implements OnInit {
     this.message = '';
   }
   getChats(friendId){
+    this.chatFriend={name:friendId}
     this.handleService
     .getAllChats(this.currentUser,friendId)
     .subscribe((chats)=>{
       console.log("data got for all chats:",chats)
-      this.AllChats=chats;
+      Array.prototype.push.apply(this.messages,chats); 
     })
   }
   requstDoctor(){

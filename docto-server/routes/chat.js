@@ -5,7 +5,10 @@ const mysql = require("../config/mysqlconfig");
 
 
 var storeChat=(from,to,msg)=>{
-    let queryargs = [from,to,msg];
+	let queryargs = [from,to,msg];
+	if(to){
+
+	
 	let query = "insert into message (from_user_id,to_user_id,message) VALUES(?,?,?) ";
     console.log("fianl query",query)
 	mysql.getmysqlconnandrun(function (err, data, msg) {
@@ -14,6 +17,8 @@ var storeChat=(from,to,msg)=>{
 			
 		}
 	}, mysql.queryReturn(query, queryargs));
+}
+
 }
 
 

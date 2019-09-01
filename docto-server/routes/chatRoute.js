@@ -27,7 +27,7 @@ router.post('/getAllChats', async (req, res) => {
 	console.log("req data:",req.body)
     
 	let queryargs = [req.body.userid,req.body.friendid,req.body.friendid,req.body.userid];
-	let query = "SELECT id,from_user_id,to_user_id,message FROM message WHERE (from_user_id = ? AND to_user_id = ?)	OR	(from_user_id = ? AND to_user_id = ? ) ORDER BY id ASC";
+	let query = "SELECT id,to_user_id as userid,message FROM message WHERE (from_user_id = ? AND to_user_id = ?)	OR	(from_user_id = ? AND to_user_id = ? ) ORDER BY id ASC";
     console.log("fianl query",query)
 	mysql.getmysqlconnandrun(function (err, data, msg) {
 	    if (!err){
