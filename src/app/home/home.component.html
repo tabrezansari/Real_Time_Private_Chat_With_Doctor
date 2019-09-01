@@ -7,9 +7,9 @@
                 </div>
                 <div class="users">
                     <ul>
-                        <!-- <li *ngFor="let user of activeUsers" (click)="setChatFriend(user.userid)" >
-                            {{user.name}}
-                        </li> -->
+                        <li *ngFor="let chat of succChat" (click)="getChats(chat.user2)" >
+                            {{chat.user2}}
+                        </li>
                        
                     </ul>
                     <button *ngIf="!isDoctor" (click)="requstDoctor()" class="req-btn">Request Chat</button>

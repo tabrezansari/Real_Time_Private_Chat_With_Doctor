@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   chatFriend=null;
   succChat=null;
   isDoctor=null;
+  AllChats=null;
   currentUser=JSON.parse(localStorage.getItem("userMeta")).userid;
   constructor(private chatService: ChatService,private router:Router,private handleService:HandlerService) { 
 
@@ -28,6 +29,14 @@ export class HomeComponent implements OnInit {
   sendMessage(toUser) {
     this.chatService.sendMessage(this.message,toUser);
     this.message = '';
+  }
+  getChats(friendId){
+    this.handleService
+    .getAllChats(this.currentUser,friendId)
+    .subscribe((chats)=>{
+      console.log("data got for all chats:",chats)
+      this.AllChats=chats;
+    })
   }
   requstDoctor(){
    this.chatService.sendDoctorRequest();
@@ -42,14 +51,20 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['']);
 
      }
+
+     //get all the sucess chat history
+
+
+     
      //fire for socket to emit chat history the succesfull chats
      this.chatService.getHistChat();
 
 
      //get all succesful chat data from 
-     this.chatService
-     .getHistChatData()
+     this.handleService
+     .getHistChatData(this.currentUser)
      .subscribe((succChat)=>{
+       console.log("data got:",succChat)
        this.succChat=succChat;
      })
      //get all the messages

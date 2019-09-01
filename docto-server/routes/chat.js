@@ -16,9 +16,29 @@ var storeChat=(from,to,msg)=>{
 	}, mysql.queryReturn(query, queryargs));
 }
 
+
+var storeSChat=(u1,u2)=>{
+    let queryargs = [u1,u2];
+	let query = "insert into schat (user1,user2) VALUES(?,?) ";
+	let query2 = "select * from schat where user1=? AND user2=?";
+
+	mysql.getmysqlconnandrun(function (err, data, msg) {
+		console.log("check exist same schat",data)
+	    if (data.length==0){
+			mysql.getmysqlconnandrun(function (err, data, msg) {
+				if (!err){
+					console.log("schat data stored in the database!")
+					
+				}
+			}, mysql.queryReturn(query, queryargs));
+		}
+	}, mysql.queryReturn(query2, queryargs));
+	
+}
+
 var getSuccessChats=(userId)=>{
-	let queryargs = [userId,userId];
-	let query = "select * from message where from_user_id=? OR to_user_id=? GROUP BY to_user_id";
+	let queryargs = [userId];
+	let query = "SELECT * FROM schat WHERE user1=?";
     console.log("fianl query",query)
 	mysql.getmysqlconnandrun(function (err, data, msg) {
 	    if (!err){
@@ -29,30 +49,8 @@ var getSuccessChats=(userId)=>{
 }
 
 
-router.post('/', async (req, res) => {
-	console.log("req data:",req.body)
-    
-
-	let queryargs = [req.body.email, req.body.password];
-	let query = "select * from users where email=? AND password=?";
-    console.log("fianl query",query)
-	mysql.getmysqlconnandrun(function (err, data, msg) {
-	    if (!err){
-			var resData={
-				message:1,
-				token:data[0].email,
-				group:data[0].usergrp
-			}
-
-	        res.send(resData);
-	    }
-	}, mysql.queryReturn(query, queryargs));
-
-
-
-
-});
 
 
 exports.storeChat=storeChat;
+exports.storeSChat=storeSChat;
 exports.getSuccessChats=getSuccessChats;

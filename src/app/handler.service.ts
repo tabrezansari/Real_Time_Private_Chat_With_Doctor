@@ -48,6 +48,15 @@ logout() : void {
  
       localStorage.clear();
        this.router.navigate(['/login']);
+       
+}
+ getHistChatData = (userid) => {
+   console.log("getting succ chat for user:",userid)
+  return this.http.post<{chats:[]}>("http://localhost:1001/api/chat/getList",{userid:userid});
+
+}
+getAllChats = (userid,friendId) => {
+ return this.http.post<{chats:[]}>("http://localhost:1001/api/chat/getAllChats",{userid:userid,friendid:friendId});
 
 }
  

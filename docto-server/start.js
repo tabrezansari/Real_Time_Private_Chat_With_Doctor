@@ -3,6 +3,8 @@ require('express-async-errors');
 const _ = require("lodash");
 const auth = require("./routes/auth");
 const chat = require("./routes/chat");
+const chatR = require("./routes/chatRoute");
+
 // const project_categories = require("./routes/project_categories");
 // const project_documents = require("./routes/project_documents");ß
 const bodyParser = require('body-parser');
@@ -62,8 +64,9 @@ io.on('connection', (socket) => {
 
     });
     socket.on('getmessages', () => {
-      console.log("retrivng history chats")
       var finder=_.find(activeUser,{socket_id:socket.id})
+      console.log("retrivng history chats",finder.userid)
+
 
       var chats=chat.getSuccessChats(finder.userid);
 
@@ -86,6 +89,7 @@ io.on('connection', (socket) => {
         var doctor=_.find(activeUser,{socket_id:socket.id})
         console.log("doctor starting chat with to :",doctor)
         socket.join("private_chat");
+        chat.storeSChat(userId,doctor.userid);
         io.sockets.emit("clear_reqs",userId)
         io.sockets.in(userId).emit('chat', doctor);
 
@@ -115,7 +119,7 @@ app.get('/', (req,res) => {
 // app.use('/api/projects', projects);
 // app.use('/api/categories', project_categories);
 // app.use('/api/documents', project_documents);
-// app.use('/api/users', users);
+app.use('/api/chat', chatR);
 app.use('/api/auth', auth);
 
 // app.use(error);

@@ -30,14 +30,7 @@ public getHistChat = () => {
   this.socket.emit('getmessages');
 
 }
-public getHistChatData = () => {
-  return Observable.create((observer) => {
-      this.socket.on('getmsgs', (succChat) => {
-        console.log("succesffull chats data are:",succChat)
-          observer.next(succChat);
-      });
-  });
-}
+
 public getReqCleared = () => {
   return Observable.create((observer) => {
       this.socket.on('clear_reqs', (reqs) => {
