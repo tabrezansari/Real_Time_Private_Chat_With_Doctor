@@ -4,7 +4,7 @@ var connectionconfig = {
     'connectionLimit': 5,
     'host': 'localhost',
     'user': 'root',
-    'password': 'intellicar',
+    'password': 'YOUR_PASSWORD',
     'database': 'docto',
     'debug': false
     //'multipleStatements': true
@@ -26,15 +26,12 @@ var getmysqlconnandrun = function (callback, funcafterconnection) {
 var queryReturn = function (queryToRun, queryArg) {
     return function (connection, callback) {
         var sqlquery = connection.query(queryToRun, queryArg, function (err, results) {
-            console.log("Connected and entered");
             connection.release();
             if (err) {
-                console.log("Connected and failed", err);
                 callback(err, null, "Query Run Error");
             }
 
             else {
-                console.log("Connected and passed");
                 callback(null, results, "Query ran successfully");
             }
         });

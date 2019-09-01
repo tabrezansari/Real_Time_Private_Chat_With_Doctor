@@ -46,7 +46,7 @@ export class HandlerService {
   logout(): void {
 
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
 
   }
   getHistChatData = (userid) => {

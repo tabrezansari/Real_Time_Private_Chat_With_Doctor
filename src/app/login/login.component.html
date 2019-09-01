@@ -1,22 +1,22 @@
 <div class="login-Page">
-<div class="loginContainer">
+    <div class="loginContainer">
 
-    <div class="login-header">
-        <label>Login To Chat With Docto</label>
+        <div class="login-header">
+            <label>Login To Chat With Docto</label>
+        </div>
+        <div class="login-body">
+
+            <form #logform="ngForm" (ngSubmit)="login(logform)">
+                <div class="form-el">
+                    <input type="text" name="email" [(ngModel)]="email" placeholder="email">
+                </div>
+                <div class="form-el">
+                    <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
+                </div>
+                <div class="form-el">
+                    <Button type="submit">Let's Chat</Button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="login-body">
-            
-    <form #logform="ngForm" (ngSubmit)="login(logform)">
-        <div class="form-el">
-            <input type="text" name="email" [(ngModel)]="email" placeholder="email">
-        </div>
-        <div class="form-el">
-            <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
-        </div>
-        <div class="form-el">
-            <Button type="submit">Let's Chat</Button>
-        </div>
-    </form>
-    </div>
-</div>
 </div>

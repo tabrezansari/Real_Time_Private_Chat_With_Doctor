@@ -1,3 +1,13 @@
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <span>Docto</span>
+    <div class="spacer"></div>
+    <span (click)="logout()" style="margin-right:1rem;cursor: pointer;">Logout</span>
+</div>
 <div class="homeContainer">
     <div class="home-body">
         <div class="chat-window">
@@ -7,54 +17,55 @@
                 </div>
                 <div class="users">
                     <ul>
-                        <li *ngFor="let chat of succChat" (click)="getChats(chat.user2)" >
+                        <li *ngFor="let chat of succChat" (click)="getChats(chat.user2)">
                             {{chat.user2}}
                         </li>
-                       
+
                     </ul>
                     <button *ngIf="!isDoctor" (click)="requstDoctor()" class="req-btn">Request Chat</button>
                 </div>
             </div>
             <div class="chat-box" *ngIf="chatFriend!==null">
                 <div class="header">
-                   {{chatFriend.name}}
-                </div >
-                <div class="body" >
-                       <div *ngFor="let chat of messages">
+                    {{chatFriend.name}}
+                </div>
+                <div class="body">
+                    <div *ngFor="let chat of messages">
                         <div class="left-msg" *ngIf="chat.userid===currentUser">
-                        <i class="fas fa-user-md propic"></i>
+                            <i class="fas fa-user-md propic"></i>
 
-                        <span class="lmsg"> {{chat.message}}</span> 
+                            <span class="lmsg"> {{chat.message}}</span>
                         </div>
 
                         <div class="right-msg" *ngIf="chat.userid!==currentUser">
                             <i class="fas fa-user proright"></i>
                             <span class="rmsg">{{chat.message}}</span>
-                            
+
                         </div>
-                        </div>
-                        
+                    </div>
+
 
                 </div>
                 <div class="footer">
-                    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage(chatFriend.userid)" type="text" placeholder="Send Message">
-                    <button (click)="sendMessage(chatFriend.userid)" >Send</button>
+                    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage(chatFriend.userid)"
+                        type="text" placeholder="Send Message">
+                    <button (click)="sendMessage(chatFriend.userid)">Send</button>
                 </div>
             </div>
             <div class="notification" *ngIf="isDoctor">
-            <div class="list-notification">
-                <div class="list-header">
-                    <label>Chat Requests</label>
-                </div>
-                <div class="nots">
-                    <ul>
-                        <li *ngFor="let chat of totalReq" (click)="startChat(chat)" >
-                            {{chat.name}}
-                        </li>
-                       
-                    </ul>
+                <div class="list-notification">
+                    <div class="list-header">
+                        <label>Chat Requests</label>
+                    </div>
+                    <div class="nots">
+                        <ul>
+                            <li *ngFor="let chat of totalReq" (click)="startChat(chat)">
+                                {{chat.name}}
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
