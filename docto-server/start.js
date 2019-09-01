@@ -5,8 +5,6 @@ const auth = require("./routes/auth");
 const chat = require("./routes/chat");
 const chatR = require("./routes/chatRoute");
 
-// const project_categories = require("./routes/project_categories");
-// const project_documents = require("./routes/project_documents");ß
 const bodyParser = require('body-parser');
 
 const express = require('express');
@@ -42,7 +40,6 @@ var privateChat=[];
 let io = require('socket.io')(Server)
 io.on('connection', (socket) => {
   socket.on('join', function (data) {
-    console.log("createing room for user:",data.userid)
     if(!_.find(activeUser, {userid:data.userid})) {
       data.socket_id=socket.id;
       activeUser.push(data);
@@ -53,10 +50,7 @@ io.on('connection', (socket) => {
     io.emit("active-users",activeUser);
 
   });
-    console.log('user connected',socket.id);
     socket.on('new-message', (chatFriend) => {
-      console.log("message data recv:",chatFriend);
-      console.log('user' +socket.id+ 'sent message to "'+ chatFriend.toUser +'"');
       var sender=_.find(activeUser,{socket_id:socket.id})
 
       chat.storeChat(sender.userid,chatFriend.toUser,chatFriend.message);
@@ -65,7 +59,6 @@ io.on('connection', (socket) => {
     });
     socket.on('getmessages', () => {
       var finder=_.find(activeUser,{socket_id:socket.id})
-      console.log("retrivng history chats",finder.userid)
 
 
       var chats=chat.getSuccessChats(finder.userid);
@@ -74,10 +67,8 @@ io.on('connection', (socket) => {
 
     });
       socket.on('doctor-request',(user)=>{
-        console.log("calling to requ doctors")
         for(let idx in activeUser){
           if(activeUser[idx].group===2){
-            console.log("sending request to :",activeUser[idx].name)
             socket.join("private_chat");
             io.sockets.in(activeUser[idx].userid).emit('chat_req', {userid:user.userid,name:user.name});
             
@@ -87,7 +78,6 @@ io.on('connection', (socket) => {
       });
       socket.on('start_chat',(userId)=>{
         var doctor=_.find(activeUser,{socket_id:socket.id})
-        console.log("doctor starting chat with to :",doctor)
         socket.join("private_chat");
         chat.storeSChat(userId,doctor.userid);
         io.sockets.emit("clear_reqs",userId)
@@ -96,7 +86,6 @@ io.on('connection', (socket) => {
       })
 
     socket.on('disconnect', function() {
-      console.log("user disconnect")
       for(let idx in activeUser){
         if(activeUser[idx].socket_id===socket.id){
           activeUser.splice(idx,1);
@@ -116,13 +105,10 @@ app.get('/', (req,res) => {
   res.send("Hello World");
 });
 
-// app.use('/api/projects', projects);
-// app.use('/api/categories', project_categories);
-// app.use('/api/documents', project_documents);
+
 app.use('/api/chat', chatR);
 app.use('/api/auth', auth);
 
-// app.use(error);
 
 const port = 1001;
 Server.listen(port, () => {console.log(`Listening app on port ${port}...`)})

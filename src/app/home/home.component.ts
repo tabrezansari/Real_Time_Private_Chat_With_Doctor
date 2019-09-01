@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
     this.handleService
     .getAllChats(this.currentUser,friendId)
     .subscribe((chats)=>{
-      console.log("data got for all chats:",chats)
       Array.prototype.push.apply(this.messages,chats); 
     })
   }
@@ -65,14 +64,12 @@ export class HomeComponent implements OnInit {
      this.handleService
      .getHistChatData(this.currentUser)
      .subscribe((succChat)=>{
-       console.log("data got:",succChat)
        this.succChat=succChat;
      })
      //get all the messages
      this.chatService
      .getMessages()
      .subscribe((message: string) => {
-       console.log("messges is:",message)
        this.messages.push(message);
      });
      
@@ -90,13 +87,11 @@ export class HomeComponent implements OnInit {
      .getActiveUsers().
      subscribe((activeUsers:[])=>{
        this.activeUsers=activeUsers;
-       console.log("active usersar are:",activeUsers)
      });
     // get chat requst from patient
      this.chatService
      .getChatRequest()
      .subscribe((totalReq) => {
-       console.log("messges is:",totalReq)
        if(!_.find(this.totalReq,{userid:totalReq.userid})){
         this.totalReq.push(totalReq);
 
@@ -118,7 +113,6 @@ export class HomeComponent implements OnInit {
   
 
   startChat(user){
-    console.log("doctor accept chat for :",user)
     this.chatFriend=user;
     this.chatService.startChatPatient(user.userid);
 

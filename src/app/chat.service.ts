@@ -14,8 +14,7 @@ export class ChatService {
       }
     }
     public sendMessage(message,toUser) {
-      console.log("messges sending is:",message)
-      console.log("message sending to patient :",toUser)
+    
       this.socket.emit('new-message', {message:message,toUser:toUser});
   }
   public getMessages = () => {
@@ -34,7 +33,6 @@ public getHistChat = () => {
 public getReqCleared = () => {
   return Observable.create((observer) => {
       this.socket.on('clear_reqs', (reqs) => {
-        console.log("clearging request for chat :",reqs)
           observer.next(reqs);
       });
   });
@@ -42,7 +40,6 @@ public getReqCleared = () => {
 public getActiveUsers = () => {
   return Observable.create((observer) => {
       this.socket.on('active-users', (users) => {
-        console.log("active users are:",users)
           observer.next(users);
       });
   });
@@ -59,7 +56,6 @@ public startChatPatient=(userId)=>{
 public getChatRequest = () => {
   return Observable.create((observer) => {
       this.socket.on('chat_req', (req) => {
-        console.log("req data:",req)
           observer.next(req);
       });
   });
@@ -67,7 +63,6 @@ public getChatRequest = () => {
 public getChatStart = () => {
   return Observable.create((observer) => {
       this.socket.on('chat', (chat) => {
-        console.log("starting chat with doctor:",chat)
           observer.next(chat);
       });
   });
